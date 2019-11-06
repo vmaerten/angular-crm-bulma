@@ -1,0 +1,40 @@
+<section class="section">
+  <div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <h3 class="title is-3" style="text-align: center">Connexion</h3>
+          <div class="field">
+            <label class="label">Login</label>
+            <div class="control">
+              <input class="input" [ngClass]="{'is-danger' : shouldDisplayErrors('login')}" formControlName="login" type="text" placeholder="Login">
+              <crm-help [field]="loginForm.get('login')" [messages]="{
+              required : 'Entrez votre login',
+              minlength : 'Le login doit avoir un minimum de 3 caractères.'
+              }"></crm-help>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Mot de passe</label>
+            <div class="control">
+              <input class="input" [ngClass]="{'is-danger' : shouldDisplayErrors('password')}" formControlName="password" type="text" placeholder="mot de passe">
+              <crm-help [field]="loginForm.get('password')" [messages]="{
+              required : 'Entrez votre mot de passe'
+              }"></crm-help>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" class="button is-link">Valider</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
